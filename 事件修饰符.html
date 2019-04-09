@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="事件修饰符.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="vue-app">
+        <h1>Events</h1>
+        <p>my age is  {{age}}</p>
+        <button @click.once="add(1)">加1</button>
+        <button v-on:click="subtract(1)">减1</button>
+
+        <button v-on:dblclick="add(10)">加1</button>
+        <button v-on:dblclick="subtract(10)">减1</button>
+
+        <div id="cav" v-on:mousemove="updataXY">
+            {{x}},{{y}} - <span v-on:mousemove.stop="">Stop moving</span>
+        </div>
+
+        <a v-on:click.prevent="alert" href="http://www.baidu.com">the new step</a>
+        <!-- .prevent 阻止默认事件的修饰符-->
+    </div>
+</body>
+<script src="事件修饰符.js"></script>
+</html>

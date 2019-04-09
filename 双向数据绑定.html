@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJs</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="vue-app">
+        <h1>双向数据绑定</h1>
+        <label>姓名：</label>
+        <!--<input ref="name" type="text" v-on:keyup="logname">-->
+        <input ref="name" type="text" v-model="name">
+        <!--使用 v-model ，就会先将 name 的值显示出来-->
+        <span>{{name}}</span>
+        <label>年龄：</label>
+        <input ref="age" type="text" v-on:keyup="logage">
+        <span>{{age}}</span>
+    </div>
+</body>
+<script src="双向数据绑定.js"></script>
+</html>
