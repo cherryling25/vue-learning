@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJs</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+     <!--vue-app是根容器-->
+    <div id="vue-app">
+        <h1>v-if</h1>
+
+        <button v-on:click="error = !error">Toggle error</button>
+        <button v-on:click="success = !success">Toggle success</button>
+
+        <!--<p v-if="error">网络连接错误：404</p>
+        <p v-else-if="success">网络连接成功：200</p>-->
+        <!-- v-else-if 两者选一个-->
+
+        <p v-show="error">网络连接错误：404</p>
+        <p v-show="success">网络连接成功：200</p>
+        <!--存在，只是style="display:none"-->
+    </div>
+</body>
+<script src="v-if.js"></script>
+</html>
