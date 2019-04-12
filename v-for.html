@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="v-for.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="vue-app">
+        <!--数组下标获取
+        {{characters[0]}}
+        {{characters[1]}}
+        {{characters[2]}}   -->
+
+        <!--数组遍历-->
+        <ul>
+            <li v-for="num in characters">
+                {{num}}
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="x in users">
+                {{x.name}} -- {{x.age}}
+            </li>
+            <!--<li v-for="(x,index) in users">
+                {{index}}. {{x.name}} -- {{x.age}}
+            </li> 加下标--> 
+        </ul>
+
+        <template v-for="x in users"> <!--使用 template与 div相比， 它就不会复制三份一样的div，
+            而是直接渲染h3和p-->
+            <h3>Name - {{x.name}}</h3>
+            <p>Age - {{x.age}}</p>
+        </template>
+
+        <!--遍历对象-->
+        <template v-for="user in users"> <!--拿到单个对象-->
+            <div v-for="(val,key) in user"> <!--单个对象里遍历，拿到val和key值-->
+               <p>{{key}}--{{val}}</p>
+            </div>
+        </template>
+    </div>
+</body>
+<script src="v-for.js"> </script>
+</html>
