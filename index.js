@@ -3,7 +3,7 @@ new Vue({
     el:"#vue-app",
     data: {
       sites: [
-        { name: 'Runoob' },
+        { name: 'dongdong' },
         { name: 'Google' },
         { name: 'Taobao' }
       ]
