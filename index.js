@@ -1,13 +1,15 @@
 
-new Vue({
-    el:"#vue-app",
-    data: {
-      sites: [
-        { name: 'dongdong' },
-        { name: 'Google' },
-        { name: 'Taobao' }
-      ]
-    }
 
-});
 
+var vm = new Vue({
+  el: '#app',
+      data: {
+          show:true,
+          styleobj :{
+              fontSize:'30px',
+              color:'red'
+          }
+      },
+      methods : {
+      }
+  });
