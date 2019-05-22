@@ -1,15 +1,12 @@
 
 
-
 var vm = new Vue({
   el: '#app',
       data: {
-          show:true,
-          styleobj :{
-              fontSize:'30px',
-              color:'red'
-          }
+         web:'http://cherryling25.github.io'
+          
       },
+
       methods : {
       }
   });
