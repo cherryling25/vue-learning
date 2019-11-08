@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>插槽</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <box-a>
+            <template v-slot:header>
+                <h1>Here might be a page title</h1>
+            </template>
+
+            <p>A paragraph for the main content.</p>
+            <p>And another one.</p>
+
+            <template v-slot:footer>
+                <p>Here's some contact info</p>
+            </template>
+        </box-a>    
+    </div>
+</body>
+<script>
+  Vue.component('box-a', {
+      template: ` <div class="container">
+            <header>
+                <!-- 我们希望把页头放这里 -->
+                <slot name="header"></slot>
+            </header>
+
+            <main>
+                <!-- 我们希望把主要内容放这里 -->
+                <slot></slot>
+            </main>
+
+            <footer>
+                <!-- 我们希望把页脚放这里 -->
+                <slot name="footer"></slot>
+            </footer>
+            </div>
+                `,
+
+})
+
+    new Vue({
+        el: "#app",
+        data:{
+           
+        },
+        methods:{
+            
+        }
+        
+    });
+</script>
+</html>
