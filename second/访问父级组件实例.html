@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>访问父级组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="example">
+        <parent-component></parent-component>
+      </div>
+   
+</body>
+<script>
+ Vue.component('parent-component', {
+  template: `<div>
+              <h3>我是父组件</h3>
+              <p>{{parentMsg}}</p>
+              <child-component></child-component>    
+            </div>`,
+  data(){
+    return{
+      parentMsg:'我是父组件的数据'
+    }
+  },
+
+  components:{
+    'child-component':{
+      template: `<div>
+                  <h3>我是子组件</h3>
+                  <p>{{msg}}</p>
+                  <button v-on:click="showData">显示父组件数据</button>    
+                </div>`,
+      data(){
+        return{
+          msg:''
+        }
+      },
+      methods:{
+        showData(){
+          this.msg = this.$parent.parentMsg;
+        }
+      }
+    }
+  }
+})
+
+new Vue({
+  el:'#example'
+})
+
+
+</script>
+</html>
