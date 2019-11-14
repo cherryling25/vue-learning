@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>侦听日期选择器</title>
+    <script src="https://unpkg.com/pickaday@1.7.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input ref="startDateInput" v-model="date" type="date">
+        <input ref="endDateInput" v-model="date" type="date">
+      </div>
+</body>
+<script>
+ 
+new Vue({ 
+  el: '#app',
+  data: {
+  	date: null
+  },
+ /*  
+  // 一次性将这个日期选择器附加到一个输入框上，它会被挂载到 DOM 上。
+  mounted: function () {
+    var picker = new Pikaday({  // Pikaday 是一个第三方日期选择器的库
+      field: this.$refs.dateInput,
+      format: 'YYYY-MM-DD'
+    })
+
+    // 在组件被销毁之前，也销毁这个日期选择器。
+    this.$once('hook:beforeDestroy', function () {
+      picker.destroy()
+    })
+  }
+ */
+
+mounted: function () {
+  this.attachDatepicker('startDateInput')
+  this.attachDatepicker('endDateInput')
+},
+methods: {
+  attachDatepicker: function (refName) {
+    var picker = new Pikaday({
+      field: this.$refs[refName],
+      format: 'YYYY-MM-DD'
+    })
+
+    this.$once('hook:beforeDestroy', function () {
+      picker.destroy()
+    })
+  }
+}
+})
+</script>
+</html>
