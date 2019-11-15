@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>递归组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    li{
+       cursor: pointer; 
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <tree v-bind:folder='trees'></tree>
+    </div>
+</body>
+<script>
+  Vue.component('tree', {
+      name:"gs",        
+      props:['folder'],
+      template: ` 
+        <ul>
+            <li v-for = "item in folder" @click.stop.self='show=!show'>
+                 {{item.label}}  
+            <gs v-if='show' :folder = "item.children"></gs>
+            </li>
+        </ul>
+                `,
+        data(){
+            return {
+				show:false
+            }
+        },
+})
+
+    new Vue({
+        el: "#app",
+        data:{
+            trees:[
+                {
+                    id:1,
+                    label:'一级目录1',
+                    children:[
+                        {
+                            id:1-1,
+                            label:'1.1目录'
+                        },
+                        {
+                            id:1-2,
+                            label:'1.2目录'
+                        }
+                    ]
+                },
+                {
+                    id:2,
+                    label:'一级目录2',
+                    children:[
+                        {
+                            id:2-1,
+                            label:'2.1目录',
+                            children:[
+                                {
+                                    id:2-1-1,
+                                    label:'2.1.1目录'
+                                }
+                            ]
+                        },
+                        {
+                            id:2-2,
+                            label:'2.2目录'
+                        }
+                    ]
+                }
+            ]
+        }
+        
+    });
+</script>
+</html>
