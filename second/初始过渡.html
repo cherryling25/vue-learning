@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>初始渲染的过渡</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="show = !show">Toggle show</button>
+  
+        <transition appear
+        appear-class="custom-appear"
+        appear-to-class="custom-appear-to"
+        appear-active-class="custom-appear-active"
+
+	
+            
+            
+			v-on:before-appear="customBeforeAppearHook"
+			v-on:appear="customAppearHook"
+			v-on:after-appear="customAfterAppearHook"
+			v-on:appear-cancelled="customAppearCancelledHook" >
+            <p v-if="show">hello,Lorem ipsum dolor sit amet</p>
+        </transition>
+    </div>
+</body>
+
+<script>
+
+new Vue({  
+	el:"#app",
+	data: {
+		show: true,
+        
+	},
+    methods: {
+        customBeforeAppearHook: function(){
+			console.log("customBeforeAppearHook")
+		},
+		customAppearHook: function(){
+			console.log("customAppearHook")
+		},
+		customAfterAppearHook: function(){
+			console.log("customAfterAppearHook")
+		},
+		customAppearCancelledHook: function(){
+			console.log("customAppearCancelledHook")
+		}
+        }
+	})
+</script>
+
+<style>
+.custom-appear-active{
+  color: #2fe26d;
+  background: #b6b6b6;
+  transition: all 1s ease;
+ }
+ .custom-appear{
+  font-size: 40px;
+  color: #e069e2;
+  background: #7798e2;
+ }
+ .custom-appear-to{
+  color: #e29138;
+  background: #1c8942;
+ }
+
+</style>
+</html>
