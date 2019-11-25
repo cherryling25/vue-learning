@@ -12,13 +12,10 @@
         <button @click="show = !show">Toggle show</button>
   
         <transition appear
-        appear-class="custom-appear"
-        appear-to-class="custom-appear-to"
-        appear-active-class="custom-appear-active"
+            appear-class="custom-appear"
+            appear-to-class="custom-appear-to"
+            appear-active-class="custom-appear-active"
 
-	
-            
-            
 			v-on:before-appear="customBeforeAppearHook"
 			v-on:appear="customAppearHook"
 			v-on:after-appear="customAfterAppearHook"

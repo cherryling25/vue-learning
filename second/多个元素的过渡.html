@@ -10,16 +10,10 @@
 <body>
     <div id="app">
         <button @click="show = !show">Toggle show</button>
-        <transition appear
-			appear-class="custom-appear-class"
-			appear-to-class="custom-appear-to-class"
-            appear-active-class="custom-appear-active-class"
-            
-			v-on:before-appear="customBeforeAppearHook"
-			v-on:appear="customAppearHook"
-			v-on:after-appear="customAfterAppearHook"
-			v-on:appear-cancelled="customAppearCancelledHook" >
-            <p v-if="show">hello,Lorem ipsum dolor sit amet</p>
+        <transition>
+            <p v-if='show' v-bind:key="docState">
+                {{ buttonMessage }}
+            </p>
         </transition>
     </div>
 </body>
@@ -30,41 +24,30 @@ new Vue({
 	el:"#app",
 	data: {
 		show: true,
-        
+        arr:['saved','edited','editing']
 	},
-    methods: {
-        customBeforeAppearHook: function(){
-			console.log("customBeforeAppearHook")
-		},
-		customAppearHook: function(){
-			console.log("customAppearHook")
-		},
-		customAfterAppearHook: function(){
-			console.log("customAfterAppearHook")
-		},
-		customAppearCancelledHook: function(){
-			console.log("customAppearCancelledHook")
-		}
+    computed:{
+        docState(){
+            return this.arr[1];
+        },  
+        buttonMessage:function(){
+            switch(this.docState){
+                case'saved':return 'Edit'
+                case'edited':return 'Save'
+                case'editing':return 'Cancel'
+            }
         }
+    }
 	})
 </script>
 
 <style>
-.custom-appear-to-class{
-  color: #e29138;
-  background: #1c8942;
+.v-enter,.v-leave-to{
+  opacity: 0;
 }
  
-.custom-appear-active-class{
-  color: #2fe26d;
-  background: #b6b6b6;
-  transition: all 8s ease;
- }
-
- .custom-appear-class{
-  font-size: 40px;
-  color: #e069e2;
-  background: #7798e2;
+.v-enter-active,.v-leave-active{
+  transition: all 5s;
  }
 
 </style>
